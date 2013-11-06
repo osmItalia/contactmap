@@ -83,10 +83,7 @@ class MessageSender(object):
             'Accept-Encoding': 'gzip,deflate,sdch',
             'Host': 'www.openstreetmap.org',
             'Accept-Language': 'it-IT,it;',
-            'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) '
-                          'AppleWebKit/537.36 (KHTML, like Gecko) '
-                          'Ubuntu Chromium/30.0.1599.114 '
-                          'Chrome/30.0.1599.114 Safari/537.36',
+            'User-Agent': 'contactmap',
             'Content-Type': 'application/x-www-form-urlencoded',
             'Accept': 'text/html,application/xhtml+xml,application/xml;'
                       'q=0.9,image/webp,*/*;q=0.8',
