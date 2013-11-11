@@ -74,19 +74,22 @@ Speriamo sarai dei nostri.
 
 Cristian (a.k.a. CristianCantoro)
 ed i mapper della lista talk-it-trentino
-'''.encode('utf-8')
+'''
 
 sent = set([])
 
 for box in boxes:
     for name in names_within(*box):
         if name not in sent:
-            name = name.encode('utf-8')
-            sender.send_message(user=name,
+            name_enc = name.encode('utf-8')
+            message = message.format(
+                        username=name.encode('utf-8')
+                       )
+            sender.send_message(user=name_enc,
                                 subject=subject,
-                                text=message.format(username=name)
+                                text=message
                                )
             sent.add(name)
-            print 'Send message to: {}'.format(name)
+            print 'Send message to: {}'.format(name_enc)
         else:
-            print 'Message already sent to: {}'.format(name)
+            print 'Message already sent to: {}'.format(name_enc)
