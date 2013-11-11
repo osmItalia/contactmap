@@ -80,13 +80,14 @@ sent = set([])
 
 for box in boxes:
     for name in names_within(*box):
+        name = name.encode('utf-8')
         if name not in sent:
-            sender.send_message(user=username,
+            sender.send_message(user=name,
                                 subject=subject,
                                 text=message.format(username=name)\
                                         .encode('utf-8')
                                )
             sent.add(name)
-            print 'Send message to: {}'.format(name.encode('utf-8'))
+            print 'Send message to: {}'.format(name)
         else:
             print 'Message already sent to: {}'.format(name)
