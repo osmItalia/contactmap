@@ -19,15 +19,20 @@ def names_in(minlon, minlat, maxlon, maxlat):
           )
     }
 
-    res = requests.get(NEIS_BASEURL, params=params)
+    res = None
+    try:
+        res = requests.get(NEIS_BASEURL, params=params)
+    except requests.exceptions.ConnectionError:
+       pass
 
-    if not res.ok:
-        res.raise_for_status()
+    if res:
+        if not res.ok:
+            res.raise_for_status()
 
-    features = res.json()['features']
+        features = res.json()['features']
 
-    for f in features:
-        yield f['properties']['n']
+        for f in features:
+            yield f['properties']['n']
 
 MAX_ZOOM_LATUNIT = 0.023481163
 MAX_ZOOM_LONUNIT = 0.064373016
